@@ -6,7 +6,7 @@
 #define IMPLEMENT_API
 #endif
 
-#if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX)
+#if defined(HX_WINDOWS) || defined(HX_MACOS) || defined(HX_LINUX) || defined(HX_IOS)
 // Include neko glue....
 #define NEKO_COMPATIBLE
 #endif
@@ -44,7 +44,7 @@ typedef unsigned int uint32;
 typedef unsigned short uint16;
 typedef unsigned char uint8;
 
-#ifndef HX_WINDOWS
+#ifndef HX_WINDOWS || HX_IOS
 #include <stdint.h>
 #else
 typedef uint64 uint64_t;
@@ -266,7 +266,7 @@ vpx_image_t *_vpx_codec_get_frame(HxWebmContext *codecPointer) {
 #define DEFINE_FUNC_4(NAME, PARAM1, PARAM2, PARAM3, PARAM4) DEFINE_FUNC(4, NAME, value PARAM1, value PARAM2, value PARAM3, value PARAM4)
 #define DEFINE_FUNC_5(NAME, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5) DEFINE_FUNC(5, NAME, value PARAM1, value PARAM2, value PARAM3, value PARAM4, value PARAM5)
 
-#ifdef HX_WINDOWS
+#ifdef HX_WINDOWS || HX_IOS
 #define snprintf _snprintf
 #endif
 
